@@ -24,6 +24,8 @@ for part,start,end in page_range:
    prnge [i] = (part,p)
    i += 1
 
+print ("Predefined page range:", i)
+
 def address (m,n):
   return ("https://wikisource.org/wiki/Page:Macovei-Dictionario_"
     f"Encyclopedic_de_Interlingua-{m}_de_4.pdf/{n}?action=raw")
@@ -38,7 +40,6 @@ def read_page (addr):
   except urllib.error.HTTPError:
     html = "\n[Hic manca un pagina.]"
   return html + "\n"
-
 
 def wrapped (txt):
   wrp = textwrap.TextWrapper (width=args.wrap)
@@ -68,15 +69,16 @@ for arg in vars (args):
 
 directory = args.directory
 
-if not os.path.exists (directory):
-  os.mkdir (directory)
-  print ("Created directory:",directory)
-
 statfile = "current.txt"
-if not args.init and not args.directory and os.path.isfile (statfile):
+if not args.init and os.path.isfile (statfile):
   with open (statfile) as f5:
     pr = int (f5.readline())
 else:
+  pr = 0
+
+if not os.path.exists (directory):
+  os.mkdir (directory)
+  print ("Created directory:",directory)
   pr = 0
 
 pr += 1
