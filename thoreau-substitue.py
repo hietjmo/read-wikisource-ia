@@ -1,16 +1,6 @@
 
 # python thoreau-substitue.py -i dictionario-encyclopedic-2021-08-31.txt -o output.txt --log
 
-"""
-Haiku VI
-
-Aride stratas
-ma in alcun fenestras
-yo vide flores
-
-(Marcus Scriptor, 2013)
-"""
-
 import argparse
 import re
 import time
