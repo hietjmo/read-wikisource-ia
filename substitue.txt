@@ -9,6 +9,7 @@ gegenadastoot	genadestoot
  adj 	 {adj} 
  adv 	 {adv} 
  \n	\n
+\n.\n	\n
 \n+	\n
  - 	 ~ 
  -,	 ~,
@@ -16,6 +17,12 @@ gegenadastoot	genadestoot
  — 	 ~ 
  —,	 ~,
  —\.	 ~.
+ —s(?![a-z])	 ~s
+ –s(?![a-z])	 ~s
+ -s(?![a-z])	 ~s
+ —es(?![a-z])	 ~es
+ –es(?![a-z])	 ~es
+ -es(?![a-z])	 ~es
 <br>	
 \nDe hic:	 De hic:
 '''	
