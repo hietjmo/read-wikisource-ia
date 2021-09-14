@@ -3,7 +3,13 @@ gegenadastoot	genadestoot
 '''\+	+ '''
  {(.*)}'''	''' {\g<1>} 
 ''' ([a-z]+) 	''' {\g<1>} 
-\n\n	\n
+ prep\. 	 {prep} 
+ s 	 {s} 
+ v 	 {v} 
+ adj 	 {adj} 
+ adv 	 {adv} 
+ \n	\n
+\n+	\n
  - 	 ~ 
  -,	 ~,
  -\.	 ~.
@@ -15,8 +21,10 @@ gegenadastoot	genadestoot
 '''	
 ''	
 \n\+ 	\n
-\n\n	\n
+\n+	\n
 <u>	
 </u>	
+{vide}	vide
+= 	 
 
 

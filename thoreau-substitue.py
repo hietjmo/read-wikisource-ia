@@ -1,9 +1,10 @@
 
-# python thoreau-substitue.py -i dictionario-encyclopedic-2021-08-31.txt -o output.txt --log
+# python thoreau-substitue.py -i dictionario-encyclopedic-2021-09-13.txt -o output.txt --log
 
 import argparse
 import re
 import time
+from datetime import datetime
 from math import *
 from collections import defaultdict
 from tabulate import tabulate
@@ -13,6 +14,7 @@ def read_args ():
   parser.add_argument ("-i", "--input", default="input.txt")
   parser.add_argument ("-o", "--output", default="output.txt")
   parser.add_argument ("-s", "--substitue", default="substitue.txt")
+  parser.add_argument ("-p", "--prefixdate", default="")
   parser.add_argument ("-sep", "--separator", default="\t")
   parser.add_argument ("--log", action="store_true")
   args = parser.parse_args ()
@@ -21,6 +23,7 @@ def read_args ():
 args = read_args()
 
 start = time.time()
+date = datetime.today().strftime('%Y-%m-%d')
 
 g = open (args.substitue)
 xs = g.readlines ()
@@ -41,7 +44,10 @@ for pattern,repl in subs:
   text,fnd = re.subn (pattern,repl,text)
   found [(pattern,repl)] = found [(pattern,repl)] + fnd
 
-h = open (args.output,"w")
+outputfile = args.output
+if args.prefixdate:
+  outputfile = args.prefixdate + "-" + date + ".txt"
+h = open (outputfile,"w")
 h.write (text)
 h.close ()
 
@@ -53,6 +59,7 @@ end = time.time()
 total = end - start
 decimals = abs (floor (log (total,10))) + 2
 if args.log:
+  print ("Scribeva", outputfile)
   print (tabulate (subs2))
   print (f"({total:.{decimals}} s)\n") 
 
